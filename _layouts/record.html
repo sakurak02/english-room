@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>#001 - 英語学習室</title>
+<title>{{ page.number }} - {{ site.title }}</title>
 
 <style>
 body{
@@ -85,31 +85,13 @@ footer{
 </head>
 
 <body>
-<a class="site-link" href="../../index.html">英語学習室</a>
+<a class="site-link" href="../../">英語学習室</a>
 
 <article>
-<h1 class="record-title">#001</h1>
-<p class="record-date">2026-06-30</p>
+<h1 class="record-title">{{ page.number }}</h1>
+<p class="record-date">{{ page.date | date: "%Y-%m-%d" }}</p>
 
-<section>
-  <h2>今日の単語</h2>
-  <p><!-- ここに書く --></p>
-</section>
-
-<section>
-  <h2>今日の熟語</h2>
-  <p><!-- ここに書く --></p>
-</section>
-
-<section>
-  <h2>今日の構文</h2>
-  <p><!-- ここに書く --></p>
-</section>
-
-<section>
-  <h2>今日の記録</h2>
-  <p><!-- ここに書く --></p>
-</section>
+{{ content }}
 </article>
 
 <footer>

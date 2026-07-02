@@ -1,3 +1,6 @@
+---
+layout: null
+---
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -140,12 +143,15 @@ footer{
 
 <script>
 const records=[
+{% assign records = site.pages | where: "layout", "record" | sort: "number" %}
+{% for record in records %}
     {
-        year:"2026",
-        number:"001",
-        date:"2026-06-30",
-        href:"2026/001/index.html"
-    }
+        year:"{{ record.year }}",
+        number:"{{ record.number | escape }}",
+        date:"{{ record.date | date: '%Y-%m-%d' }}",
+        href:"{{ record.url | remove_first: '/' }}"
+    }{% unless forloop.last %},{% endunless %}
+{% endfor %}
 ];
 
 const counter=document.getElementById("counter");
@@ -177,11 +183,11 @@ years.forEach(year=>{
         const card=document.createElement("a");
         card.className="card";
         card.href=record.href;
-        card.setAttribute("aria-label",`#${record.number} ${record.date}を開く`);
+        card.setAttribute("aria-label",`${record.number} ${record.date}を開く`);
 
         const number=document.createElement("span");
         number.className="card-number";
-        number.textContent=`#${record.number}`;
+        number.textContent=record.number;
 
         const date=document.createElement("span");
         date.className="card-date";
