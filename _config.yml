@@ -2,3 +2,6 @@ title: 英語学習室
 timezone: Asia/Tokyo
 exclude:
   - README.md
+  
+plugins:
+  - jekyll-sitemap
